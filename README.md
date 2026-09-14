@@ -37,39 +37,3 @@ to GitHub Pages via GitHub Actions.
 │   └── deploy.yml        # build + deploy to GitHub Pages
 └── astro.config.mjs
 ```
-
-## Local development
-
-```sh
-npm install
-npm run dev
-```
-
-Site runs at `http://localhost:4321`.
-
-## Build
-
-```sh
-npm run build     # outputs to ./dist
-npm run preview   # preview the production build locally
-```
-
-## Deployment
-
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds the site
-with Astro and publishes `./dist` to GitHub Pages. In the repo's **Settings → Pages**,
-the source must be set to **GitHub Actions**.
-
-DNS for the custom domain is managed in Cloudflare (`public/CNAME` holds
-`zahirulislam.dev`).
-
-## Things to keep current
-
-A few pieces of content live as data in the components and are worth revisiting
-periodically:
-
-- **`src/components/Projects.astro`** — infra case studies and indie app entries
-- **`src/pages/resume.astro`** and **`public/resume.pdf`** — should stay in sync with each other
-- **`src/components/Contact.astro`** — Formspree endpoint (`formEndpoint`)
-- **`src/components/Footer.astro`** — GitHub repo path used for the deploy-status badge
-- **`src/layouts/Layout.astro`** — Cloudflare Web Analytics token
