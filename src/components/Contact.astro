@@ -1,0 +1,121 @@
+---
+// TODO: replace YOUR_FORM_ID with a real Formspree (or similar) endpoint
+const formEndpoint = 'https://formspree.io/f/YOUR_FORM_ID';
+const email = 'cse.zahirulislam@gmail.com';
+
+const links = [
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/islam-mdzahirul' },
+  { label: 'GitHub', href: 'https://github.com/zahirulislam04' },
+];
+---
+
+<section id="contact" class="reveal px-6 py-24">
+  <div class="mx-auto max-w-xl">
+    <h2 class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-amber-400"><span class="font-mono text-zinc-600">04</span>Contact</h2>
+    <p class="mt-4 text-zinc-200">
+      Open to freelance work and new opportunities — send a message or find me here.
+    </p>
+
+    <form id="contact-form" action={formEndpoint} method="POST" class="mt-8 space-y-4">
+      <div>
+        <label for="name" class="block text-sm text-zinc-300">Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          class="mt-1 w-full rounded-md border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500"
+        />
+      </div>
+      <div>
+        <label for="email" class="block text-sm text-zinc-300">Email</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          class="mt-1 w-full rounded-md border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500"
+        />
+      </div>
+      <div>
+        <label for="message" class="block text-sm text-zinc-300">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          required
+          class="mt-1 w-full rounded-md border border-zinc-700 bg-zinc-950 px-3 py-2 text-sm text-zinc-100 outline-none focus:border-amber-500"
+        ></textarea>
+      </div>
+
+      <!-- Honeypot: real users never see or fill this; Formspree drops submissions where it's non-empty -->
+      <div class="absolute left-[-9999px]" aria-hidden="true">
+        <label for="_gotcha">Leave this field empty</label>
+        <input id="_gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <p id="contact-error" class="hidden text-sm text-red-400">
+        Please wait a moment before sending — that was a bit too quick.
+      </p>
+
+      <button
+        type="submit"
+        class="rounded-md bg-amber-500 px-5 py-2.5 text-sm font-semibold text-zinc-950 transition hover:bg-amber-400"
+      >
+        Send message
+      </button>
+    </form>
+
+    <div class="mt-10 flex flex-wrap items-center gap-6 text-sm text-zinc-300">
+      <button
+        id="copy-email"
+        type="button"
+        data-email={email}
+        class="inline-flex items-center gap-2 transition hover:text-white"
+      >
+        <span id="copy-email-label">{email}</span>
+      </button>
+      {links.map((link) => (
+        <a href={link.href} target="_blank" rel="noopener" class="transition hover:text-white">
+          {link.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Time-trap: bots that fill and submit forms within a second or two of page load
+  // are almost certainly automated. Block those submissions client-side.
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const errorEl = document.getElementById('contact-error');
+  const loadedAt = Date.now();
+
+  form?.addEventListener('submit', (e) => {
+    const elapsed = Date.now() - loadedAt;
+    if (elapsed < 2000) {
+      e.preventDefault();
+      errorEl?.classList.remove('hidden');
+    }
+  });
+
+  // Copy-email button
+  const copyBtn = document.getElementById('copy-email');
+  const copyLabel = document.getElementById('copy-email-label');
+  copyBtn?.addEventListener('click', async () => {
+    const email = copyBtn.getAttribute('data-email') || '';
+    try {
+      await navigator.clipboard.writeText(email);
+      if (copyLabel) {
+        const original = copyLabel.textContent;
+        copyLabel.textContent = 'Copied!';
+        setTimeout(() => {
+          copyLabel.textContent = original;
+        }, 1800);
+      }
+    } catch {
+      // Clipboard API unavailable — fall back to a mailto link
+      window.location.href = `mailto:${email}`;
+    }
+  });
+</script>

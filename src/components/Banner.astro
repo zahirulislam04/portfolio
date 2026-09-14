@@ -1,0 +1,36 @@
+---
+const messages = [
+  '8+ years scaling multi-account AWS platforms',
+  '400+ customer systems, automated end to end',
+  'AI-driven incident response, 70% less effort',
+];
+---
+
+<div class="sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-zinc-700 bg-black/95 px-6 py-3 backdrop-blur">
+  <span class="inline-flex items-center gap-2 text-sm text-amber-300">
+    <span class="h-2 w-2 shrink-0 rounded-full bg-amber-400"></span>
+    <span id="banner-message" class="transition-opacity duration-500">{messages[0]}</span>
+  </span>
+  <a
+    href="/resume.pdf"
+    download
+    class="shrink-0 rounded-md border border-zinc-600 px-3 py-1.5 text-sm text-zinc-200 transition hover:border-zinc-400 hover:text-white"
+  >
+    Download CV
+  </a>
+</div>
+
+<script define:vars={{ messages }}>
+  const el = document.getElementById('banner-message');
+  if (el) {
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % messages.length;
+      el.style.opacity = '0';
+      setTimeout(() => {
+        el.textContent = messages[i];
+        el.style.opacity = '1';
+      }, 300);
+    }, 4000);
+  }
+</script>

@@ -1,0 +1,80 @@
+---
+const infraProjects = [
+  {
+    title: 'AWS Backup & Restore Pipeline',
+    problem: 'Manual, inconsistent backup/restore processes for RDS and FSx across a multi-account fleet.',
+    approach: 'Built a GitLab CI pipeline driving Terraform to standardize backups and restores, with maintenance-window scheduling.',
+    outcome: 'Repeatable, auditable backup/restore across 400+ customer systems.',
+  },
+  {
+    title: 'EFS/FSx Performance Tuning',
+    problem: 'Slow file transfer speeds impacting customer workloads.',
+    approach: 'Diagnosed throughput bottlenecks and tuned EFS/FSx configuration; planned an FSx for Windows migration.',
+    outcome: 'Measurable transfer-speed improvements and a clearer migration path.',
+  },
+  {
+    title: 'AI-Powered Alert Intelligence Agent',
+    problem: 'Alert triage across the platform was manual and slow to resolve.',
+    approach: 'Prototyped an AI agent (IOA) backed by a Known Fix Library to suggest resolutions for incoming alerts.',
+    outcome: 'Proof of concept for faster, more consistent incident response.',
+  },
+];
+
+const indieApps = [
+  {
+    title: 'Hydrate Daily - Water Tracker',
+    brand: 'rawbuild.de',
+    description: 'A calm hydration companion for iPhone. Track water intake, build daily streaks, and meet your personal goal. Free, no account needed.',
+    status: 'Live on the App Store',
+    // TODO: swap in the real App Store URL once available
+    url: 'https://rawbuild.de/hydratedaily',
+  },
+  {
+    title: 'Fitness App',
+    brand: 'rawbuild.de',
+    description: 'An indie mobile fitness app built with React Native/Expo and Supabase, following Clean Architecture + MVVM.',
+    status: 'In development',
+  },
+];
+---
+
+<section id="projects" class="reveal border-b border-zinc-800/60 px-6 py-24">
+  <div class="mx-auto max-w-3xl">
+    <h2 class="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-amber-400"><span class="font-mono text-zinc-600">03</span>Projects</h2>
+
+    <h3 class="mt-8 text-lg font-semibold text-white">Infrastructure work</h3>
+    <div class="mt-6 grid gap-6">
+      {infraProjects.map((project) => (
+        <div class="rounded-lg border border-zinc-800 p-6 transition duration-300 hover:-translate-y-1 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/5">
+          <h4 class="text-base font-semibold text-white">{project.title}</h4>
+          <dl class="mt-3 space-y-2 text-sm text-zinc-200">
+            <div><dt class="inline font-medium text-zinc-300">Problem: </dt><dd class="inline">{project.problem}</dd></div>
+            <div><dt class="inline font-medium text-zinc-300">Approach: </dt><dd class="inline">{project.approach}</dd></div>
+            <div><dt class="inline font-medium text-zinc-300">Outcome: </dt><dd class="inline">{project.outcome}</dd></div>
+          </dl>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="mt-12 text-lg font-semibold text-white">
+      Indie apps <span class="text-sm font-normal text-zinc-400">(hobby project)</span>
+    </h3>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      {indieApps.map((app) => (
+        <div class="rounded-lg border border-zinc-800 p-6 transition duration-300 hover:-translate-y-1 hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/5">
+          <div class="flex items-center justify-between">
+            <h4 class="text-base font-semibold text-white">{app.title}</h4>
+            <span class="text-xs text-zinc-400">{app.status}</span>
+          </div>
+          <p class="mt-1 text-xs uppercase tracking-wide text-amber-400">{app.brand}</p>
+          <p class="mt-3 text-sm text-zinc-200">{app.description}</p>
+          {app.url && (
+            <a href={app.url} target="_blank" rel="noopener" class="mt-3 inline-block text-sm text-amber-400 hover:underline">
+              View app &rarr;
+            </a>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

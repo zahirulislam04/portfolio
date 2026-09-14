@@ -1,0 +1,53 @@
+---
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
+  { href: '/resume', label: 'Resume (print view)' },
+];
+
+const socials = [
+  { label: 'Email', href: 'mailto:cse.zahirulislam@gmail.com' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/islam-mdzahirul' },
+  { label: 'GitHub', href: 'https://github.com/zahirulislam04' },
+];
+---
+
+<aside class="border-b border-zinc-800 bg-black px-6 py-10 lg:fixed lg:inset-y-0 lg:left-0 lg:w-80 lg:border-b-0 lg:border-r lg:border-zinc-800 lg:overflow-y-auto">
+  <div class="flex h-full flex-col lg:justify-between">
+    <div>
+      <img
+        src="/profile_pic.jpg"
+        alt="Md Zahirul Islam"
+        class="h-20 w-20 rounded-full border border-zinc-700 object-cover"
+      />
+      <h1 class="mt-4 text-xl font-semibold text-white">Md Zahirul Islam</h1>
+      <p class="mt-1 text-sm text-amber-400">Lead Cloud Developer</p>
+      <p class="mt-4 text-sm leading-relaxed text-zinc-300">
+        8+ years automating and scaling multi-account AWS platforms. Indie apps
+        on the side under rawbuild.de.
+      </p>
+
+      <nav class="mt-8">
+        <ul class="space-y-3 text-sm">
+          {links.map((link) => (
+            <li>
+              <a href={link.href} class="text-zinc-200 transition hover:text-white">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <div class="mt-10 lg:mt-0">
+      <div class="flex gap-5 text-sm text-zinc-300">
+        {socials.map((social) => (
+          <a href={social.href} target="_blank" rel="noopener" class="transition hover:text-white">
+            {social.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</aside>

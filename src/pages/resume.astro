@@ -1,0 +1,226 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const achievements = [
+  {
+    title: 'AI-Powered Incident Response',
+    detail: "Built the team's first AI root-cause-analysis agent, cutting incident response effort by 70%.",
+  },
+  {
+    title: 'Automated Platform Scaling',
+    detail: 'Modernized operations to fully automated pipelines, scaling to 400+ customers without added headcount.',
+  },
+  {
+    title: 'End-to-End Observability',
+    detail: 'Built a full-stack observability platform for near real-time monitoring across the fleet.',
+  },
+  {
+    title: 'Strengthened Platform Resilience',
+    detail: 'Automated disaster-recovery, backup, and patching across multi-AZ deployments.',
+  },
+];
+
+const skills = [
+  'AWS', 'Terraform', 'Ansible', 'GitLab CI/CD', 'Docker', 'Kubernetes',
+  'Prometheus', 'Grafana', 'Wazuh', 'Python', 'Bash',
+];
+
+const experience = [
+  {
+    period: '11.2022 – Present',
+    title: 'Lead Cloud Developer',
+    org: 'LORENZ Life Sciences Group, Frankfurt am Main',
+    bullets: [
+      'Provisioned infrastructure for 400+ customer systems across 4 AWS accounts and regions.',
+      'Built an AI agent for root-cause analysis, cutting incident response effort by 70%.',
+      'Built an observability stack (Grafana, Prometheus, Loki, Tempo) for near real-time monitoring.',
+    ],
+  },
+  {
+    period: '03.2022 – 09.2022',
+    title: 'DevOps Engineer',
+    org: 'Nordcloud (an IBM Company), Frankfurt am Main',
+    bullets: [
+      'Automated CI/CD and provisioning for an IoT data streaming platform on Azure.',
+      'Designed network architecture for real-time data ingestion and dashboarding.',
+    ],
+  },
+  {
+    period: '12.2020 – 02.2022',
+    title: 'Working Student, Cloud Developer',
+    org: 'LORENZ Life Sciences Group, Frankfurt am Main',
+    bullets: [
+      'Built a highly available monitoring solution on Kubernetes with critical-event alerting.',
+    ],
+  },
+  {
+    period: '06.2019 – 09.2020',
+    title: 'Working Student, IT',
+    org: 'Enterprise Rent-A-Car, Frankfurt am Main',
+    bullets: [
+      'Automated a VAT processing tool, cutting manual work for the finance team.',
+    ],
+  },
+  {
+    period: '05.2011 – 08.2018',
+    title: 'Project Lead, IT',
+    org: 'IQVIA, Dhaka',
+    bullets: [
+      'Led a performance dashboard for Johnson & Johnson, integrating multiple data sources.',
+      'Managed 10+ SQL Server instances and built ETL processes, cutting manual data work.',
+    ],
+  },
+  {
+    period: '06.2009 – 04.2011',
+    title: 'Software Engineer',
+    org: 'BDG & Technohaven Co. Ltd., Dhaka',
+    bullets: [
+      'Built cheque-printing automation and maintained a leasing/investment platform.',
+    ],
+  },
+];
+
+const education = [
+  {
+    period: '10.2019 – 03.2022',
+    title: 'M.Sc. High Integrity Systems',
+    org: 'Frankfurt University of Applied Sciences',
+  },
+  {
+    period: '01.2005 – 04.2009',
+    title: 'B.Sc. Computer Science and Engineering',
+    org: 'Khulna University of Engineering & Technology',
+  },
+];
+
+const certifications = [
+  'AWS Certified Solutions Architect – Associate (2022)',
+  'AWS Certified SysOps Administrator – Associate (2022)',
+  'AWS Certified Cloud Practitioner (2021)',
+  'HashiCorp Certified: Terraform Associate (2022)',
+];
+
+const languages = ['English — Professional working proficiency', 'German — Basic knowledge'];
+---
+
+<Layout
+  title="Md Zahirul Islam — Resume"
+  description="Resume for Md Zahirul Islam, Lead Cloud Developer with 8+ years automating and scaling multi-account AWS platforms."
+>
+  <div class="mx-auto max-w-3xl px-6 py-16 print:py-0">
+    <div class="mb-8 flex items-center justify-between print:hidden">
+      <a href="/" class="text-sm text-amber-400 hover:underline">&larr; Back to portfolio</a>
+      <div class="flex gap-3">
+        <button
+          id="print-btn"
+          type="button"
+          class="rounded-md border border-zinc-700 px-4 py-2 text-sm text-zinc-200 transition hover:border-zinc-500 hover:text-white"
+        >
+          Print / Save as PDF
+        </button>
+        <a
+          href="/resume.pdf"
+          download
+          class="rounded-md bg-amber-500 px-4 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-amber-400"
+        >
+          Download PDF
+        </a>
+      </div>
+    </div>
+
+    <header class="border-b border-zinc-800 pb-6 print:border-zinc-300">
+      <h1 class="text-3xl font-bold text-white print:text-black">Md. Zahirul Islam</h1>
+      <p class="mt-1 text-amber-400 print:text-zinc-700">Lead Cloud Developer</p>
+      <p class="mt-2 text-sm text-zinc-400 print:text-zinc-600">
+        Hanau, Germany &middot; cse.zahirulislam@gmail.com &middot; +49 152 29473129
+      </p>
+      <p class="mt-1 text-sm text-zinc-400 print:text-zinc-600">
+        linkedin.com/in/islam-mdzahirul &middot; zahirulislam.dev &middot; github.com/zahirulislam04
+      </p>
+    </header>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-amber-400 print:text-zinc-700">Profile</h2>
+      <p class="mt-3 text-zinc-200 print:text-black">
+        Lead Cloud Developer with 8+ years automating and scaling multi-account AWS platforms in
+        high-availability, regulated environments. Currently run a multi-tenant platform spanning
+        400+ customer systems across 4 AWS accounts and 4 regions, using Terraform, GitLab CI/CD,
+        and Ansible. Focused on observability, resilient backup/restore automation, and performance
+        at scale.
+      </p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-amber-400 print:text-zinc-700">Key Achievements</h2>
+      <div class="mt-3 space-y-3">
+        {achievements.map((a) => (
+          <div>
+            <h3 class="text-sm font-semibold text-white print:text-black">{a.title}</h3>
+            <p class="text-sm text-zinc-400 print:text-zinc-700">{a.detail}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-amber-400 print:text-zinc-700">Skills</h2>
+      <p class="mt-3 text-sm text-zinc-200 print:text-black">{skills.join(' | ')}</p>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-amber-400 print:text-zinc-700">Work Experience</h2>
+      <div class="mt-3 space-y-5">
+        {experience.map((job) => (
+          <div>
+            <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+              <h3 class="text-sm font-semibold text-white print:text-black">{job.title}</h3>
+              <span class="text-xs text-zinc-500 print:text-zinc-600">{job.period}</span>
+            </div>
+            <p class="text-sm text-amber-400/90 print:text-zinc-700">{job.org}</p>
+            <ul class="mt-1.5 list-disc space-y-1 pl-5 text-sm text-zinc-400 print:text-zinc-700">
+              {job.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-amber-400 print:text-zinc-700">Education</h2>
+      <div class="mt-3 space-y-3">
+        {education.map((e) => (
+          <div class="flex flex-wrap items-baseline justify-between gap-x-3">
+            <div>
+              <h3 class="text-sm font-semibold text-white print:text-black">{e.title}</h3>
+              <p class="text-sm text-zinc-400 print:text-zinc-700">{e.org}</p>
+            </div>
+            <span class="text-xs text-zinc-500 print:text-zinc-600">{e.period}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-8">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-amber-400 print:text-zinc-700">Certifications</h2>
+      <p class="mt-3 text-sm text-zinc-200 print:text-black">{certifications.join(' | ')}</p>
+    </section>
+
+    <section class="mt-8 mb-16">
+      <h2 class="text-sm font-semibold uppercase tracking-widest text-amber-400 print:text-zinc-700">Languages</h2>
+      <p class="mt-3 text-sm text-zinc-200 print:text-black">{languages.join(' | ')}</p>
+    </section>
+  </div>
+</Layout>
+
+<script>
+  document.getElementById('print-btn')?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  @media print {
+    :global(body) {
+      background: white !important;
+      color: black !important;
+    }
+  }
+</style>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zahirulislam.dev/sitemap-index.xml

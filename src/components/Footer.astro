@@ -1,0 +1,15 @@
+---
+const year = new Date().getFullYear();
+
+// TODO: replace zahirulislam04/portfolio with your actual GitHub owner/repo
+const repo = 'zahirulislam04/portfolio';
+const badgeSrc = `https://github.com/${repo}/actions/workflows/deploy.yml/badge.svg`;
+const actionsUrl = `https://github.com/${repo}/actions/workflows/deploy.yml`;
+---
+
+<footer class="fixed inset-x-0 bottom-0 z-40 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 border-t border-zinc-700 bg-black/95 px-6 py-2 text-center text-xs text-zinc-400 backdrop-blur lg:left-80">
+  <p>&copy; {year} Md Zahirul Islam.</p>
+  <a href={actionsUrl} target="_blank" rel="noopener" class="inline-flex items-center transition hover:opacity-80">
+    <img src={badgeSrc} alt="Deploy status" class="h-4" />
+  </a>
+</footer>

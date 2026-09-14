@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Banner from '../components/Banner.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <div class="lg:flex">
+    <Sidebar />
+    <div class="bg-zinc-900 lg:ml-80 lg:flex-1">
+      <Banner />
+      <main class="pb-12">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
+    </div>
+  </div>
+</Layout>
