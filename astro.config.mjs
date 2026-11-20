@@ -8,6 +8,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://zahirulislam.dev',
   integrations: [sitemap()],
+  server: { host: true },
   vite: {
     plugins: [tailwindcss()]
   }
